@@ -1,0 +1,17 @@
+/* .image-slider-container {
+    position: static;
+    width: 100%;
+    height: 350px;
+    overflow: hidden;
+  }
+  
+  .image-slider {
+    display: flex;
+    transition: transform 0.1s ease-in-out;
+  }
+  
+  .image {
+    width: 50%;
+    height: 90%;
+    object-fit: cover;
+  } */
