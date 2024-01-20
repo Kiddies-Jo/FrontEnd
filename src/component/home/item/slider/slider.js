@@ -1,55 +1,39 @@
-import React, { useState, useEffect } from "react";
-import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
-import { Grid, IconButton } from "@mui/material";
-import { images } from "./images";
+import React, { useRef, useState } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import 'swiper/css';
+import 'swiper/css/effect-coverflow';
+import 'swiper/css/pagination';
+import './style.css';
+import { EffectCoverflow, Pagination } from 'swiper/modules';
+import { data } from '../../../allData';
 
-const ImageSlider = () => {
-  const [currentImage, setCurrentImage] = useState(0);
-
-  const PrevNextImages = (direction) => {
-    if (direction === "next") {
-      setCurrentImage((prevImage) => (prevImage + 1) % images.length);
-    } else if (direction === "prev") {
-      setCurrentImage((prevImage) =>
-        prevImage === 0 ? images.length - 1 : prevImage - 1
-      );
-    }
-  };
-
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      PrevNextImages("next");
-    }, 2000);
-
-    return () => clearInterval(intervalId);
-  }, [currentImage]);
-
+export default function ImageSlider() {
   return (
-    <Grid item container justifyContent={"center"} paddingTop={'4rem'} paddingBottom={'4rem'}> 
-    <div style={{ position: "relative", width: "50%", height: "350px" , justifyContent:'center'}}>
-      <IconButton
-        style={{ position: "absolute", top: "50%", left: "10px", transform: "translateY(-50%)" }}
-        onClick={() => PrevNextImages("prev")}
+    <>
+      <Swiper
+        effect={'coverflow'}
+        grabCursor={true}
+        centeredSlides={true}
+        slidesPerView={'auto'}
+        initialSlide={data?.length / 2}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+          scale: 1
+        }}
+        pagination={true}
+        modules={[EffectCoverflow, Pagination]}
+        className="mySwiper"
       >
-        <ArrowBackIosNewIcon />
-      </IconButton>
-      <img
-        src={images[currentImage]}
-        width={"100%"}
-        height={"100%"}
-        alt="current"
-        style={{ borderRadius: "40px" }}
-      />
-      <IconButton
-        style={{ position: "absolute", top: "50%", right: "10px", transform: "translateY(-50%)" }}
-        onClick={() => PrevNextImages("next")}
-      >
-        <ArrowForwardIosIcon />
-      </IconButton>
-    </div>
-    </Grid>
+        {data?.map((i)=>(
+          <SwiperSlide>
+          <img src={i?.src} />
+        </SwiperSlide>
+        ))}
+      </Swiper>
+    </>
   );
-};
-
-export default ImageSlider;
+}
