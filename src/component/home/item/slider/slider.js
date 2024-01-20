@@ -5,8 +5,7 @@ import 'swiper/css/effect-coverflow';
 import 'swiper/css/pagination';
 import './style.css';
 import { EffectCoverflow, Pagination } from 'swiper/modules';
-import { data } from '../../../allData';
-
+import { sliderImages } from '../../../allData';
 export default function ImageSlider() {
   return (
     <>
@@ -15,7 +14,7 @@ export default function ImageSlider() {
         grabCursor={true}
         centeredSlides={true}
         slidesPerView={'auto'}
-        initialSlide={data?.length / 2}
+        initialSlide={sliderImages?.length / 2}
         coverflowEffect={{
           rotate: 50,
           stretch: 0,
@@ -28,9 +27,9 @@ export default function ImageSlider() {
         modules={[EffectCoverflow, Pagination]}
         className="mySwiper"
       >
-        {data?.map((i)=>(
+        {sliderImages?.map((i)=>(
           <SwiperSlide>
-          <img src={i?.src} />
+          <img src={i} />
         </SwiperSlide>
         ))}
       </Swiper>

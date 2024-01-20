@@ -1,3 +1,8 @@
+import Image1 from '../assets/kiddies1.png'
+import Image2 from '../assets/kiddies2.png'
+import Image3 from '../assets/kiddies3.png'
+import Image4 from '../assets/kiddies4.png'
+import Image5 from '../assets/kiddies5.png'
 export const data = [
     {
      src: 'https://images.unsplash.com/photo-1608667508764-33cf0726b13a',
@@ -81,3 +86,7 @@ export const data = [
      btn_text: 'Добавить в корзину',
    },
  ];
+
+ export const sliderImages = [
+  Image1,Image2,Image3,Image4,Image5
+ ]

@@ -9,44 +9,36 @@ import "swiper/css/navigation";
 import "swiper/css/pagination";
 
 import "./style.css";
-import { EffectFade, Navigation, Pagination } from "swiper/modules";
-import { Grid, Typography } from "@mui/material";
+import { Autoplay, EffectFade, Navigation, Pagination } from "swiper/modules";
 
 export default function HomeMainSlider() {
   return (
     <>
       <Swiper
         spaceBetween={30}
-        effect={"fade"}
-        navigation={true}
-        autoplay={{delay:1000}}
-        speed={1000}
-        loop
+        centeredSlides={true}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
         pagination={{
           clickable: true,
         }}
-        modules={[EffectFade, Navigation, Pagination]}
+        // navigation={true}
+        modules={[Autoplay]}
         className="mySwiper"
       >
         <SwiperSlide>
-          <p style={{ color: "white" , fontSize:'70px', display:'flex' , position:'absolute', left:'42%'}}>Kidiies</p>
-          <img src="https://swiperjs.com/demos/images/nature-1.jpg" />
-
+          <img
+            style={{ objectFit: "cover", height: "400px" }}
+            src="https://kidsindanger.org/wp-content/uploads/2022/03/hero-safety-toolkit.jpg"
+          />
         </SwiperSlide>
         <SwiperSlide>
-          <p style={{ color: "white" , fontSize:'70px', display:'flex' ,position:'absolute', left:'42%'}}>Kidiies</p>
-          <img src="https://swiperjs.com/demos/images/nature-2.jpg" />
-
-        </SwiperSlide>
-        <SwiperSlide>
-          <p style={{ color: "white" , fontSize:'70px', display:'flex' , position:'absolute', left:'42%'}}>Kidiies</p>
-          <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
-
-        </SwiperSlide>
-        <SwiperSlide>
-
-          <p style={{ color: "white" , fontSize:'70px', display:'flex' , position:'absolute', left:'42%'}}>Kidiies</p>
-        <img src="https://swiperjs.com/demos/images/nature-3.jpg" />
+          <img
+            height={"400px"}
+            src="https://kidsindanger.org/wp-content/uploads/2018/11/facebook-og-image-01.jpg"
+          />
         </SwiperSlide>
       </Swiper>
     </>
